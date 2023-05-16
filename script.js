@@ -26,7 +26,8 @@ function getForecastData() {
   }
   
   function displayWeatherForecast(data) {
- 
+  purge();
+
     // for (let i = 0; i < data.list.length; i += 8) {  ** to display all the items **
     for (let i = 0; i < 6; i += 1) {
       const weatherData = data.list[i];
@@ -56,3 +57,7 @@ function getForecastData() {
     }
   }
   
+
+function purge() {
+  forecastContainer.innerHTML = "";
+}
