@@ -9,7 +9,7 @@
     />
   </head>
   <body>
-    <section>
+    <section id="weather">
       <div class="container">
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col-md-8 col-lg-6 col-xl-4">
@@ -49,7 +49,30 @@
 
     </section>
 
+
+    <!-- Chart area -->
+    <section id="chart">
+
+      <div class="container">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-md-9">
+            <h3 class="mb-2 mt-5 fw-normal text-center fw-bold">
+              Weekly Forecast with graph
+            </h3>
+
+            <div>
+              <canvas id="myChart" class="pb-5"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      
+
+    </section>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

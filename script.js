@@ -26,8 +26,8 @@ function getForecastData() {
   }
   
   function displayWeatherForecast(data) {
-  purge();
-
+ 
+    purge();
     // for (let i = 0; i < data.list.length; i += 8) {  ** to display all the items **
     for (let i = 0; i < 6; i += 1) {
       const weatherData = data.list[i];
@@ -56,8 +56,29 @@ function getForecastData() {
       document.querySelector("#forecastContainer").appendChild(div_card);
     }
   }
-  
+
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Temperature °C',
+        data: [12, 19, 3, 5, 2, 3], // dito papalitan lang to ng array sigurado
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
 
 function purge() {
   forecastContainer.innerHTML = "";
 }
+
