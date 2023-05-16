@@ -29,14 +29,15 @@ function getForecastData() {
  
     purge();
     // for (let i = 0; i < data.list.length; i += 8) {  ** to display all the items **
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 6; i++) {
       const weatherData = data.list[i];
       const date = new Date(weatherData.dt_txt);
-      const day = date.toLocaleDateString(undefined, { weekday: 'long' });
-      const time = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', });
-    
-      const div_card = document.createElement("div");
+      // const day = date.toLocaleDateString(undefined, { weekday: 'long' });
+      const time = date.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit'});
 
+      // console.log(date);
+
+      const div_card = document.createElement("div");
       div_card.classList.add("col");
       div_card.innerHTML = `
           
@@ -52,19 +53,20 @@ function getForecastData() {
           </div>
         </div>
       `;
-      
+
       document.querySelector("#forecastContainer").appendChild(div_card);
     }
   }
 
+  
   const ctx = document.getElementById('myChart');
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       datasets: [{
         label: 'Temperature °C',
-        data: [12, 19, 3, 5, 2, 3], // dito papalitan lang to ng array sigurado
+        data: [12, 5, 8, 5 ,12, 4], // dito papalitan lang to ng array sigurado
         borderWidth: 1
       }]
     },
@@ -73,12 +75,14 @@ function getForecastData() {
         y: {
           beginAtZero: true
         }
+        
       }
     }
   });
 
 
+  
+
 function purge() {
   forecastContainer.innerHTML = "";
 }
-
