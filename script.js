@@ -27,20 +27,18 @@ function getForecastData() {
   
   function displayWeatherForecast(data) {
  
-    // for (let i = 0; i < data.list.length; i += 8) {
+    // for (let i = 0; i < data.list.length; i += 8) {  ** to display all the items **
     for (let i = 0; i < 6; i += 1) {
       const weatherData = data.list[i];
       const date = new Date(weatherData.dt_txt);
       const day = date.toLocaleDateString(undefined, { weekday: 'long' });
       const time = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', });
-      
-  
+    
       const div_card = document.createElement("div");
 
       div_card.classList.add("col");
       div_card.innerHTML = `
           
-        
         <div class="card">
           <div class="card-body">
             <h4 class="mb-1 sfw-normal">${time}</h4>
@@ -52,11 +50,6 @@ function getForecastData() {
             </p>
           </div>
         </div>
-    
-
-
-
-
       `;
       
       document.querySelector("#forecastContainer").appendChild(div_card);

@@ -1,0 +1,9 @@
+
+p {
+    font-size: 11px;
+}
+
+.weather-container{
+    width: 1000px;
+    margin: auto;
+}
