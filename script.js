@@ -27,10 +27,11 @@ function getForecastData() {
   
   function displayWeatherForecast(data) {
  
-    for (let i = 0; i < data.list.length; i += 8) {
+    // for (let i = 0; i < data.list.length; i += 8) {
+    for (let i = 0; i < 6; i += 1) {
       const weatherData = data.list[i];
       const date = new Date(weatherData.dt_txt);
-      // const day = date.toLocaleDateString(undefined, { weekday: 'long' });
+      const day = date.toLocaleDateString(undefined, { weekday: 'long' });
       const time = date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', });
       
   
