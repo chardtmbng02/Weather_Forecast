@@ -42,7 +42,7 @@ function getForecastData() {
       div_card.innerHTML = `
           
         <div class="card">
-          <div class="card-body">
+          <div class="card-body text-center">
             <h4 class="mb-1 sfw-normal">${time}</h4>
             <p class="mb-2">Temperature: ${weatherData.main.temp} °C</p>
             <p>Humidity: ${weatherData.main.humidity} %</p>
