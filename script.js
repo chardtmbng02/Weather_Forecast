@@ -25,7 +25,7 @@ function getForecastData() {
 }
 
 function displayWeatherForecast(data) {
-  clear();
+  clear(); // Prevent duplication in card when searching new city.
   for (let i = 0; i < 6; i++) {
     const weatherData = data.list[i];
     const date = new Date(weatherData.dt_txt);
@@ -39,7 +39,7 @@ function displayWeatherForecast(data) {
     div_card.classList.add("col");
     div_card.innerHTML = `
           
-        <div class="card">
+        <div class="card shadow">
           <div class="card-body text-center">
             <h4 class="mb-3 sfw-normal">${time}</h4>
             <p>Temperature: ${weatherData.main.temp} °C</p>
@@ -55,10 +55,10 @@ function displayWeatherForecast(data) {
     document.querySelector("#forecastContainer").appendChild(div_card);
   }  // End loop for Hourly Forecast
   
-//####### Master mel ##########
-
-const ctx = document.getElementById('myChart');
-    
+  
+    // Throwing data inside chart
+    const ctx = document.getElementById('myChart');
+      
     let myChart =new Chart(ctx, {
       type: 'bar',
       data: {
@@ -73,7 +73,7 @@ const ctx = document.getElementById('myChart');
         scales: {
           y: {
             beginAtZero: true,
-            max:40
+            max:50
           }
         }
       }
@@ -87,7 +87,7 @@ const ctx = document.getElementById('myChart');
       console.log(longday);
       const t=[];
     myChart.data.labels.push(longday); 
-  };
+  }
   
   myChart.update();
   for (let k = 0; k < 40; k=k+8) {
@@ -96,11 +96,15 @@ const ctx = document.getElementById('myChart');
     console.log(data.list[k].main.temp);
     myChart.data.datasets[0].data.push(t)
   }
+
   myChart.update();
     function purge(){
       weatherDataContainer.innerHTML=``;
-    };
-  };
+    }
+
+  } // end display weather data
+
+
 
 function clear() {
   forecastContainer.innerHTML = "";
