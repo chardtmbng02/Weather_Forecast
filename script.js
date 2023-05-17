@@ -1,4 +1,5 @@
 const weatherDisplay = document.querySelector("#forecastContainer");
+const chartDisplay = document.querySelector("#myChartArea");
 
 function getForecastData() {
   const apiKey = "1b0d4e056d91c25a4fe8658fd55f3f06";
@@ -39,7 +40,7 @@ function displayWeatherForecast(data) {
     div_card.classList.add("col");
     div_card.innerHTML = `
           
-        <div class="card shadow">
+        <div class="card shadow weather-card">
           <div class="card-body text-center">
             <h4 class="mb-3 sfw-normal">${time}</h4>
             <p>Temperature: ${weatherData.main.temp} °C</p>
@@ -51,6 +52,20 @@ function displayWeatherForecast(data) {
           </div>
         </div>
       `;
+
+    // Set background color based on weather description
+    const weatherDescription = weatherData.weather[0].description.toLowerCase();
+    if (weatherDescription.includes('clear')) {
+      div_card.querySelector('.card').classList.add('sunny');
+    } else if (weatherDescription.includes('cloud')) {
+      div_card.querySelector('.card').classList.add('cloudy');
+    } else if (weatherDescription.includes('rain')) {
+      div_card.querySelector('.card').classList.add('rainy');
+    } else if (weatherDescription.includes('snow')) {
+      div_card.querySelector('.card').classList.add('snowy');
+    } else if (weatherDescription.includes('storm')) {
+      div_card.querySelector('.card').classList.add('stormy');
+    }
 
     document.querySelector("#forecastContainer").appendChild(div_card);
   }  // End loop for Hourly Forecast
