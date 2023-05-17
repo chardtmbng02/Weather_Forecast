@@ -43,8 +43,8 @@ function getForecastData() {
           
         <div class="card">
           <div class="card-body text-center">
-            <h4 class="mb-1 sfw-normal">${time}</h4>
-            <p class="mb-2">Temperature: ${weatherData.main.temp} °C</p>
+            <h4 class="mb-3 sfw-normal">${time}</h4>
+            <p>Temperature: ${weatherData.main.temp} °C</p>
             <p>Humidity: ${weatherData.main.humidity} %</p>
             <p>Atmospheric Pressure: ${weatherData.main.pressure} hPa</p>
             <p>
